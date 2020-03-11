@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./db')
+const db = require('./db.js')
 
 // Upper case R on router, also it is invoked 
 const router= express.Router()   // this is what we are exporting
@@ -34,7 +34,7 @@ router.get('/:id', (req,res)=>{
     })
 });
 
-router.get('/id/comments', (req,res)=>{
+router.get('/:id/comments', (req,res)=>{
     if(!req.params.id){
         res.status(400).json({error:'The comment could not be retrieved'})
     } else{
