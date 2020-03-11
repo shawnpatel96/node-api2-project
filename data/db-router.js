@@ -12,7 +12,6 @@ router.get('/', (req,res)=>{
         res.status(200).json(posts);
     })
     .catch(error=>{
-        console.log(error)
         res.status(500).json({
             message: "Error retrieving the hubs"
         })
@@ -28,7 +27,6 @@ router.get('/:id', (req,res)=>{
         }
     })
     .catch(error=>{
-        console.log("blog post error",error)
         res.status(500).json({message: 'Error retrieving the post'})
     })
 });
@@ -45,7 +43,6 @@ router.get('/:id/comments', (req,res)=>{
             }
         })
         .catch(error=>{
-            console.log('comment error', error)
             res.status(500).json({message: 'The comment could not be retrieved'})
         })
     }
