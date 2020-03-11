@@ -18,12 +18,10 @@ router.get('/', (req,res)=>{
         })
     })
 });
-
-
 router.get('/:id', (req,res)=>{
     db.findById(req.params.id)
     .then(post=>{
-        if(post.length !==0){
+        if(post.length){
             res.status(200).json(post)
         }else {
             res.status(404).json({message:'Hub not Found'})
@@ -34,7 +32,6 @@ router.get('/:id', (req,res)=>{
         res.status(500).json({message: 'Error retrieving the post'})
     })
 });
-
 router.get('/:id/comments', (req,res)=>{
     if(!req.params.id){
         res.status(400).json({error:'The comment could not be retrieved'})
@@ -65,7 +62,6 @@ router.post('/', (req, res)=>{
         })
     }
 });
-
 router.post('/:id/comments', (req,res)=>{
     if(!req.params.id || !req.body.text || !res.body.post_id){
         res.status(400).json({message:' Error posting the comment, provide all details you spud.'})
@@ -79,7 +75,6 @@ router.post('/:id/comments', (req,res)=>{
         })
     }
 });
-
 router.put('/:id', (req,res)=>{
     if(!req.body.title || !req.body.contents){
         res.status(400).json({message:'Error updating the post, provide all the details you spud.'})
@@ -99,7 +94,6 @@ router.put('/:id', (req,res)=>{
         })
     }
 });
-
 router.delete('/:id', (req,res)=>{
     db.findById(req.params.id)
     .then(post=>{
