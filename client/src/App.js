@@ -1,14 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import axios from " axios"
+
+
+
+import axios from "axios"
 import React, { useState, useEffect } from "react";
 function App() {
   const [posts, setPosts] = useState([])
   useEffect(()=>{
-    
-    axios
-    .get('localhost:5000/api/posts/14')
+    axios.get('http://localhost:5000/api/posts/')
     .then(res=>{
         console.log(res)
         setPosts(res.data)
