@@ -1,8 +1,26 @@
-
-
-
 import axios from "axios"
 import React, { useState, useEffect } from "react";
+import {
+  CardWrapper,
+  CardHeader,
+  CardHeading,
+  CardBody,
+  CardIcon,
+  CardFieldset,
+  CardInput,
+  CardOptionsItem,
+  CardOptions,
+  CardOptionsNote,
+  CardButton,
+  CardLink,
+  StyledDiv,
+  CardBodyStyled,
+  CardWrapperStyled
+} from "./styles";
+
+
+
+
 function App() {
   const [posts, setPosts] = useState([])
   useEffect(()=>{
@@ -18,10 +36,17 @@ function App() {
     <div className="App">
       {posts.map(post=>{
         return(
-          <div>
-          <h2>{post.title}</h2>
-          <p>{post.contents}</p>
-          </div>
+          <CardWrapperStyled>
+            <CardBody>
+            <CardHeader><CardHeading>{post.title}</CardHeading></CardHeader>
+            <CardFieldset>
+            <p>{post.contents}</p>
+            <p>{post.id}</p>
+            <p>{post.created_at}</p>
+            <p>{post.updated_at}</p>
+            </CardFieldset>
+            </CardBody>
+          </CardWrapperStyled>
         )
       })}
      
