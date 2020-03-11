@@ -19,6 +19,7 @@ router.get('/', (req,res)=>{
     })
 });
 
+
 router.get('/:id', (req,res)=>{
     db.findById(req.params.id)
     .then(post=>{
