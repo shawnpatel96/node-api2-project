@@ -56,8 +56,8 @@ router.post('/', (req, res)=>{
     if(!req.body.title || !req.body.contents){
         res.status(400).json({message:'Error Adding Post'})
     } else{
-        db.insert(req.body).then(postId =>{
-            res.status(201).json(postId)
+        db.insert(req.body).then(postID =>{
+            res.status(201).json(postID)
         })
         .catch(error=>{
             res.status(500).json({message: 'Error posting the post(PUN INTENDED) to DB.'})
