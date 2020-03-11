@@ -33,6 +33,7 @@ function update(id, post) {
     .update(post);
 }
 
+
 function remove(id) {
   return db('posts')
     .where('id', Number(id))
