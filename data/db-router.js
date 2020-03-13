@@ -13,7 +13,6 @@ router.get('/', (req,res)=>{
     db.find()
     .then(posts=>{
         res.status(200).json({
-            port,
             motd: process.env.MOTD,
             posts});
     })
@@ -28,6 +27,7 @@ router.get('/:id', (req,res)=>{
     .then(post=>{
         if(post.length){
         res.status(200).json({ 
+            port,
             motd: process.env.MOTD,
             post})
         }else {
