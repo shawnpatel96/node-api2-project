@@ -1,6 +1,6 @@
 const express = require("express");
 const dbRouter= require('../data/db-router.js') 
-var cors = require('cors')
+// var cors = require('cors')
 const server = express(); // this is what we are exporting 
 
 server.use(express.json())

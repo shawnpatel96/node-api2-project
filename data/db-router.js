@@ -7,9 +7,15 @@ const router= express.Router()   // this is what we are exporting
 // the router handles endpoints that begin with /api/hubs
 // router only cares about what comes after /api/hubs
 router.get('/', (req,res)=>{
+    const environment=process.env;
+    const port=process.env.PORT || 5000
+    res.status(200).json({ api: 'up', port, environment });
     db.find()
     .then(posts=>{
-        res.status(200).json(posts);
+        res.status(200).json({
+            motd: process.env.MOTD,
+            posts
+        });
     })
     .catch(error=>{
         res.status(500).json({
