@@ -9,6 +9,7 @@ const router= express.Router()   // this is what we are exporting
 router.get('/', (req,res)=>{
     const environment=process.env;
     const port=process.env.PORT || 5000
+    res.status(200).json({ api: 'up', port, environment });
     db.find()
     .then(posts=>{
         res.status(200).json({
@@ -25,7 +26,9 @@ router.get('/:id', (req,res)=>{
     db.findById(req.params.id)
     .then(post=>{
         if(post.length){
-        res.status(200).json({ motd: process.env.MOTD,post})
+        res.status(200).json({ 
+            motd: process.env.MOTD,
+            post})
         }else {
             res.status(404).json({message:'Hub not Found'})
         }
