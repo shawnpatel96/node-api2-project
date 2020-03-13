@@ -13,6 +13,7 @@ router.get('/', (req,res)=>{
     db.find()
     .then(posts=>{
         res.status(200).json({
+            port,
             motd: process.env.MOTD,
             posts});
     })
